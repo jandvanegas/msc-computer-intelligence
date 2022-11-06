@@ -24,3 +24,9 @@ class ListState(State):
 
     def __hash__(self) -> int:
         return hash(self.value)
+
+    def __str__(self) -> str:
+        return f"ListState(value:{self.value}, List{self.list_number})"
+
+    def __repr__(self) -> str:
+        return str(self)

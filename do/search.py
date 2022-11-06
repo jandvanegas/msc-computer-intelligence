@@ -18,7 +18,6 @@ class Search(abc.ABC):
     def search(self):
         self.num_explored = 0
         self.frontier.add(self.start)
-        self.explored = set()
 
         while True:
             if self.frontier.is_empty():
@@ -30,20 +29,17 @@ class Search(abc.ABC):
             if node.state == self.goal:
                 actions = []
                 cells = []
-                while node.parent is not self.start:
+                while node.parent.action is not self.start.action:
                     actions.append(node.action)
                     cells.append(node.state)
                     node = node.parent
+                actions.append(node.action)
+                cells.append(node.state)
                 actions.reverse()
                 cells.reverse()
-                self.solution = (actions, cells)
+                self.solution = {"actions": actions, "cells": cells}
                 return
 
-            self.explored.add(node.state)
-
             for action, state in self.neighbors(node):
-                not_visited = not self.frontier.is_visited(state)
-                not_explored = state not in self.explored
-                if not_visited and not_explored:
-                    child = Node(state=state, parent=node, action=action)
-                    self.frontier.add(child)
+                child = Node(state=state, parent=node, action=action)
+                self.frontier.add(child)

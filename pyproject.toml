@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "lab1"
+version = "0.1.0"
+description = "CI lab"
+authors = ["Juan Vanegas <jandvanegas@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
