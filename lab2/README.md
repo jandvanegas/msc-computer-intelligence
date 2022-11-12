@@ -1,4 +1,4 @@
-# Lab 1: Set Covering
+# Lab 2: Set Covering
 
 ## Task
 
